@@ -40,8 +40,8 @@ import {
     <hero-card>
       <span hero-card-title>Angular + HeroUI</span>
       <span hero-card-description>Experimental wrappers</span>
-      <hero-input placeholder="Email"></hero-input>
-      <hero-select [options]="plans"></hero-select>
+      <hero-input [(value)]="email" placeholder="Email"></hero-input>
+      <hero-select [(value)]="selectedPlan" [options]="plans"></hero-select>
       <hero-button variant="secondary" (click)="isOpen = true">Open modal</hero-button>
       <hero-modal [(isOpen)]="isOpen">
         <div hero-modal-header>Confirm</div>
@@ -54,7 +54,9 @@ import {
   `,
 })
 export class AppComponent {
+  email = "";
   isOpen = false;
+  selectedPlan = "starter";
   plans = [
     {label: "Starter", value: "starter"},
     {label: "Pro", value: "pro"},

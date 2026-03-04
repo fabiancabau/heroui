@@ -10,11 +10,7 @@ export type HeroModalSize = "xs" | "sm" | "md" | "lg" | "full" | "cover";
   imports: [CommonModule],
   selector: "hero-modal",
   standalone: true,
-  template: `<div
-    *ngIf="isOpen"
-    [class]="backdropClass"
-    (click)="closeOnBackdropClick ? close() : null"
-  >
+  template: `<div *ngIf="isOpen" [class]="backdropClass" (click)="onBackdropClick()">
     <div [class]="containerClass">
       <div
         [attr.aria-describedby]="ariaDescribedBy || null"
@@ -96,7 +92,12 @@ export class HeroModalComponent {
   }
 
   close() {
-    this.isOpen = false;
     this.isOpenChange.emit(false);
+  }
+
+  onBackdropClick() {
+    if (this.closeOnBackdropClick) {
+      this.close();
+    }
   }
 }

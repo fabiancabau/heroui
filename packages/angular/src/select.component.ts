@@ -64,7 +64,6 @@ export class HeroSelectComponent {
   onNativeChange(event: Event) {
     const nextValue = (event.target as HTMLSelectElement).value;
 
-    this.value = nextValue;
     this.valueChange.emit(nextValue);
   }
 }

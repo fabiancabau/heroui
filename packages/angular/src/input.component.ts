@@ -1,5 +1,5 @@
 import {CommonModule} from "@angular/common";
-import {Component, Input} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {inputVariants} from "@heroui/styles/components/input";
 
 export type HeroInputVariant = "primary" | "secondary";
@@ -20,6 +20,7 @@ export type HeroInputVariant = "primary" | "secondary";
     [readonly]="readonly"
     [required]="required"
     [value]="value"
+    (input)="onInput($event)"
   />`,
 })
 export class HeroInputComponent {
@@ -36,6 +37,7 @@ export class HeroInputComponent {
   @Input() type = "text";
   @Input() value = "";
   @Input() variant: HeroInputVariant = "primary";
+  @Output() valueChange = new EventEmitter<string>();
 
   get classes() {
     return inputVariants({
@@ -43,5 +45,9 @@ export class HeroInputComponent {
       fullWidth: this.fullWidth,
       variant: this.variant,
     });
+  }
+
+  onInput(event: Event) {
+    this.valueChange.emit((event.target as HTMLInputElement).value);
   }
 }
