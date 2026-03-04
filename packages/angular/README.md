@@ -18,13 +18,46 @@ Then load HeroUI styles once in your global styles entry:
 
 ```ts
 import {Component} from "@angular/core";
-import {HeroButtonComponent} from "@heroui/angular";
+import {
+  HeroButtonComponent,
+  HeroCardComponent,
+  HeroInputComponent,
+  HeroModalComponent,
+  HeroSelectComponent,
+} from "@heroui/angular";
 
 @Component({
-  imports: [HeroButtonComponent],
+  imports: [
+    HeroButtonComponent,
+    HeroCardComponent,
+    HeroInputComponent,
+    HeroModalComponent,
+    HeroSelectComponent,
+  ],
   selector: "app-root",
   standalone: true,
-  template: `<hero-button variant="secondary">Click me</hero-button>`,
+  template: `
+    <hero-card>
+      <span hero-card-title>Angular + HeroUI</span>
+      <span hero-card-description>Experimental wrappers</span>
+      <hero-input placeholder="Email"></hero-input>
+      <hero-select [options]="plans"></hero-select>
+      <hero-button variant="secondary" (click)="isOpen = true">Open modal</hero-button>
+      <hero-modal [(isOpen)]="isOpen">
+        <div hero-modal-header>Confirm</div>
+        Are you sure you want to continue?
+        <div hero-modal-footer>
+          <hero-button (click)="isOpen = false">Close</hero-button>
+        </div>
+      </hero-modal>
+    </hero-card>
+  `,
 })
-export class AppComponent {}
+export class AppComponent {
+  isOpen = false;
+  plans = [
+    {label: "Starter", value: "starter"},
+    {label: "Pro", value: "pro"},
+  ];
+}
 ```
