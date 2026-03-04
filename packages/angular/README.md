@@ -77,8 +77,8 @@ import {
       <hero-link href="https://heroui.com" target="_blank">Visit HeroUI</hero-link>
       <hero-avatar fallback="HC"></hero-avatar>
       <hero-badge>
-        4
         <span hero-badge-anchor><hero-avatar fallback="FC"></hero-avatar></span>
+        4
       </hero-badge>
       <hero-chip color="accent" variant="soft">Angular</hero-chip>
       <hero-tag removable (remove)="onTagRemove()">Preview</hero-tag>

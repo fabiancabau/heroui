@@ -13,8 +13,8 @@ import {linkVariants} from "@heroui/styles/components/link";
     [attr.target]="target || null"
     [class]="baseClass"
   >
-    <span [class]="iconClass" *ngIf="showLeadingIcon" aria-hidden="true">↗</span>
     <ng-content></ng-content>
+    <span [class]="iconClass" *ngIf="showIcon" aria-hidden="true">↗</span>
   </a>`,
 })
 export class HeroLinkComponent {
@@ -22,7 +22,7 @@ export class HeroLinkComponent {
   @Input() className = "";
   @Input() href = "";
   @Input() rel = "";
-  @Input() showLeadingIcon = false;
+  @Input() showIcon = false;
   @Input() target = "";
 
   private get slots() {
