@@ -30,11 +30,6 @@ If you need v2, you can find it on the [`v2` branch](https://github.com/heroui-i
 
 Visit <a aria-label="heroui learn" href="https://v3.heroui.com/docs/quick-start">https://v3.heroui.com/docs/quick-start</a> to get started with HeroUI v3.
 
-## Angular v21 Compatibility
-
-HeroUI v3 now includes an experimental Angular compatibility package at `@heroui/angular`.
-It reuses HeroUI's shared Tailwind v4 styles from `@heroui/styles` and currently exposes Angular standalone primitives such as `HeroButtonComponent`.
-
 ## Documentation
 
 Visit [https://v3.heroui.com/docs](https://v3.heroui.com/docs) to view the full documentation.

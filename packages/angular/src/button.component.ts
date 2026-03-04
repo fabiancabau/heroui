@@ -16,11 +16,21 @@ export type HeroButtonSize = "sm" | "md" | "lg";
   imports: [CommonModule],
   selector: "hero-button",
   standalone: true,
-  template: `<button [attr.type]="type" [class]="classes" [disabled]="disabled">
+  template: `<button
+    [attr.aria-describedby]="ariaDescribedBy || null"
+    [attr.aria-label]="ariaLabel || null"
+    [attr.aria-pressed]="ariaPressed === null ? null : ariaPressed"
+    [attr.type]="type"
+    [class]="classes"
+    [disabled]="disabled"
+  >
     <ng-content></ng-content>
   </button>`,
 })
 export class HeroButtonComponent {
+  @Input("aria-describedby") ariaDescribedBy = "";
+  @Input("aria-label") ariaLabel = "";
+  @Input("aria-pressed") ariaPressed: boolean | null = null;
   @Input() className = "";
   @Input() disabled = false;
   @Input() fullWidth = false;
@@ -30,13 +40,12 @@ export class HeroButtonComponent {
   @Input() variant: HeroButtonVariant = "primary";
 
   get classes() {
-    const baseClasses = buttonVariants({
+    return buttonVariants({
+      class: this.className,
       fullWidth: this.fullWidth,
       isIconOnly: this.isIconOnly,
       size: this.size,
       variant: this.variant,
     });
-
-    return this.className ? `${baseClasses} ${this.className}` : baseClasses;
   }
 }
