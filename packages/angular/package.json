@@ -1,0 +1,37 @@
+{
+  "name": "@heroui/angular",
+  "version": "0.0.0",
+  "description": "Angular v21 compatibility primitives for HeroUI v3 styles.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "author": "HeroUI <support@heroui.com>",
+  "homepage": "https://heroui.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroui-inc/heroui.git",
+    "directory": "packages/angular"
+  },
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@heroui/styles": "workspace:*"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "tailwindcss": ">=4.0.0"
+  }
+}
